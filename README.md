@@ -1,24 +1,11 @@
-# README
+# Simple Twitter
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+:sunny::sunny::sunny::sunny::sunny::sunny::sunny::sunny:
 
-Things you may want to cover:
+這是一個教導大家如何一步一步做出一個屬於自己的陽春版Twitter，在這邊你會學到：
+* 使用者登入系統
+* Model 關聯
+* 如何上傳圖片
+* 使用rSpec寫下測試檔案
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+2017/09/30 updated
