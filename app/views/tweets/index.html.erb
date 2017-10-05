@@ -1,0 +1,17 @@
+<div class="new-tweet">
+  <%= link_to 'new Tweet!', new_tweet_path %>
+</div>
+
+<% @tweets.each do |tweet| %>
+  <div class="tweet-cell">
+    <h5><%= tweet.user.tag %></h5>
+    <hr>
+    <p>
+      <%= simple_format(tweet.description) %><br>
+      <% if tweet.user == current_user %>
+        <%= link_to 'edit this Tweet', edit_tweet_path(tweet) %>
+        <%= link_to 'delete this Tweet', tweet_path(tweet), :method => :delete, :data => { :confirm => "Are you sure?" } %>
+      <% end %>
+    </p>
+  </div>
+<% end %>
