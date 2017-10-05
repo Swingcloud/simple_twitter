@@ -21,10 +21,12 @@ class TweetsController < ApplicationController
 
   def edit
     @tweet = Tweet.find(params[:id])
+    current_user_check
   end
 
   def updated
     @tweet = Tweet.find(params[:id])
+    current_user_check
     if @tweet.update(tweet_params)
       redirect_to tweets_path
     else
@@ -34,6 +36,7 @@ class TweetsController < ApplicationController
 
   def destroy
 		@tweet= Tweet.find(params[:id])
+    current_user_check
     @tweet.destroy
 		redirect_to tweets_path
 	end
@@ -42,5 +45,12 @@ class TweetsController < ApplicationController
 
   def tweet_params
     params.require(:tweet).permit(:description)
+  end
+
+  def current_user_check
+    if current_user != @tweet.user
+      flash[:alert] = "you are not this user!"
+      redirect_to :root
+    end
   end
 end
