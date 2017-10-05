@@ -21,4 +21,8 @@ class User < ApplicationRecord
   def tag
     "@#{self.tag_name}"
   end
+
+  def to_param
+    tag_name
+  end
 end
