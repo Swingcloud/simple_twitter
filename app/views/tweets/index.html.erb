@@ -18,5 +18,8 @@
     <% else %>
         <p><%= link_to 'like!', like_tweet_path(tweet), method: :post %></p>
     <% end %>
+    <% unless tweet.liked_users_count.zero? %>
+      <p> <%= tweet.liked_users_count %> users like this tweet! </p>
+    <% end %>
   </div>
 <% end %>
