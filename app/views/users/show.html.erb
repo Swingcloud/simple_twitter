@@ -1,8 +1,10 @@
 <h1><%= @user.tag %></h1>
-<% if current_user.following.exists?(@user.id) %>
-    <p><%= link_to 'unfollow!', unfollow_user_path(@user), method: :post %></p>
-<% else %>
-    <p><%= link_to 'follow!', follow_user_path(@user), method: :post %></p>
+<% if current_user %>
+  <% if current_user.following.exists?(@user.id) %>
+      <p><%= link_to 'unfollow!', unfollow_user_path(@user), method: :post %></p>
+  <% else %>
+      <p><%= link_to 'follow!', follow_user_path(@user), method: :post %></p>
+  <% end %>
 <% end %>
 
 <% @tweets.each do |tweet| %>
@@ -16,10 +18,12 @@
         <%= link_to 'delete this Tweet', tweet_path(tweet), :method => :delete, :data => { :confirm => "Are you sure?" } %>
       <% end %>
     </p>
-    <% if current_user.like_tweets.exists?(tweet.id) %>
-        <p><%= link_to 'unlike!', like_tweet_path(tweet), method: :post %></p>
-    <% else %>
-        <p><%= link_to 'like!', like_tweet_path(tweet), method: :post %></p>
+    <% if current_user %>
+      <% if current_user.like_tweets.exists?(tweet.id) %>
+          <p><%= link_to 'unlike!', like_tweet_path(tweet), method: :post %></p>
+      <% else %>
+          <p><%= link_to 'like!', like_tweet_path(tweet), method: :post %></p>
+      <% end %>
     <% end %>
     <% unless tweet.liked_users_count.zero? %>
       <p> <%= tweet.liked_users_count %> users like this tweet! </p>
