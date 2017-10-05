@@ -1,1 +1,9 @@
 <h1>有什麼新鮮事</h1>
+
+<% @tweets.each do |tweet| %>
+  <div class="tweet-cell">
+    <h5><%= tweet.user.tag %></h5>
+    <hr>
+    <p><%= simple_format(tweet.description) %></p>
+  </div>
+<% end %>
