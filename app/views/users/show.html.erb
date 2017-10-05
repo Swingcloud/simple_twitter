@@ -1,4 +1,9 @@
 <h1><%= @user.tag %></h1>
+<% if current_user.following.exists?(@user.id) %>
+    <p><%= link_to 'unfollow!', unfollow_user_path(@user), method: :post %></p>
+<% else %>
+    <p><%= link_to 'follow!', follow_user_path(@user), method: :post %></p>
+<% end %>
 
 <% @tweets.each do |tweet| %>
   <div class="tweet-cell">
