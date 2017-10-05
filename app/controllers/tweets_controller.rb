@@ -41,6 +41,18 @@ class TweetsController < ApplicationController
 		redirect_to tweets_path
 	end
 
+  def like
+    @tweet = Tweet.find(params[:id])
+    @user = current_user
+    like_tweet = @user.likes.find_by(tweet_id: @tweet.id)
+    if like_tweet
+      like_tweet.destroy
+    else
+      @user.likes.create(tweet_id: @tweet.id)
+    end
+    redirect_to tweets_path
+  end
+
   private
 
   def tweet_params
