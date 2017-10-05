@@ -2,7 +2,7 @@
 
 <% @tweets.each do |tweet| %>
   <div class="tweet-cell">
-    <h5><%= tweet.user.tag %></h5>
+    <h5><%= link_to tweet.user.tag, user_path(tweet.user) %></h5>
     <hr>
     <p><%= simple_format(tweet.description) %></p>
     <% unless tweet.liked_users_count.zero? %>
